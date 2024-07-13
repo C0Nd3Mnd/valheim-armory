@@ -2,23 +2,7 @@ import type { ChartData, Point } from "chart.js";
 import { getIndexColor } from "~/utils/getIndexColor";
 
 export function useArmorGraph() {
-  /**
-   * Total armor value the player has.
-   */
-  const armorSets = ref<ArmorSet[]>([
-    {
-      name: "Light",
-      totalArmor: 50,
-    },
-    {
-      name: "Medium",
-      totalArmor: 80,
-    },
-    {
-      name: "Heavy",
-      totalArmor: 125,
-    },
-  ]);
+  const armorStore = useArmorStore();
 
   /**
    * Damage values to calculate the damage taken for.
@@ -34,7 +18,7 @@ export function useArmorGraph() {
   const effectiveDamageMatrix = computed(() => {
     const matrix: EffectiveDamage[] = [];
 
-    for (const armorSet of armorSets.value) {
+    for (const armorSet of armorStore.sets) {
       const dataset: EffectiveDamage = {
         armor: armorSet,
         values: [],
@@ -60,14 +44,13 @@ export function useArmorGraph() {
       labels: damageSteps.value.map((step) => step.toString()),
       datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
         label: `${armor.name.toString()} (${armor.totalArmor})`,
-        data: values.map(({ effectiveDamage }) => effectiveDamage),
+        data: values.map(({ effectiveDamage }) => Math.round(effectiveDamage)),
         borderColor: getIndexColor(index),
       })),
     }),
   );
 
   return {
-    armorSets,
     damageSteps,
     effectiveDamageMatrix,
     chartData,

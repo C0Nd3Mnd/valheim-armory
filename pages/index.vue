@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Line } from "vue-chartjs";
-const { chartData, armorSets } = useArmorGraph();
+const { chartData } = useArmorGraph();
 </script>
 
 <template>
   <Line :data="chartData" />
-  <ArmorSetEditor v-model="armorSets" />
+  <ArmorSetEditor />
 </template>
