@@ -3,5 +3,6 @@ declare interface EffectiveDamage {
   values: {
     attackDamage: number;
     effectiveDamage: number;
+    tankedHits: number;
   }[];
 }

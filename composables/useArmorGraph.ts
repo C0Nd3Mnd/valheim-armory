@@ -3,14 +3,7 @@ import { getIndexColor } from "~/utils/getIndexColor";
 
 export function useArmorGraph() {
   const armorStore = useArmorStore();
-
-  /**
-   * Damage values to calculate the damage taken for.
-   */
-  const damageSteps = ref([
-    10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170,
-    180, 190, 200,
-  ]);
+  const damageStore = useDamageStore();
 
   /**
    * Calculated effective damage values for each armor set and each damage step.
@@ -25,10 +18,13 @@ export function useArmorGraph() {
       };
       matrix.push(dataset);
 
-      for (const damageStep of damageSteps.value) {
+      for (const damageStep of damageStore.steps) {
         dataset.values.push({
           attackDamage: damageStep,
           effectiveDamage: valheimDamage(damageStep, armorSet.totalArmor),
+          tankedHits: Math.ceil(
+            200 / valheimDamage(damageStep, armorSet.totalArmor),
+          ),
         });
       }
     }
@@ -39,20 +35,34 @@ export function useArmorGraph() {
   /**
    * Generated chart data for use with chart.js.
    */
-  const chartData = computed<ChartData<"line", (number | Point | null)[]>>(
-    () => ({
-      labels: damageSteps.value.map((step) => step.toString()),
-      datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
-        label: `${armor.name.toString()} (${armor.totalArmor})`,
-        data: values.map(({ effectiveDamage }) => Math.round(effectiveDamage)),
-        borderColor: getIndexColor(index),
-      })),
-    }),
-  );
+  const effectiveDamageChart = computed<
+    ChartData<"line", (number | Point | null)[]>
+  >(() => ({
+    labels: damageStore.steps.map((step) => step.toString()),
+    datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
+      label: `${armor.name.toString()} (${armor.totalArmor})`,
+      data: values.map(({ effectiveDamage }) => Math.round(effectiveDamage)),
+      borderColor: getIndexColor(index),
+    })),
+  }));
+
+  /**
+   * Generated chart data for use with chart.js.
+   */
+  const tankedHitsChart = computed<
+    ChartData<"line", (number | Point | null)[]>
+  >(() => ({
+    labels: damageStore.steps.map((step) => step.toString()),
+    datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
+      label: `${armor.name.toString()} (${armor.totalArmor})`,
+      data: values.map(({ tankedHits }) => Math.round(tankedHits)),
+      borderColor: getIndexColor(index),
+    })),
+  }));
 
   return {
-    damageSteps,
     effectiveDamageMatrix,
-    chartData,
+    effectiveDamageChart,
+    tankedHitsChart,
   };
 }
