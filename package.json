@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "chart.js": "^4.4.3",
     "nuxt": "^3.12.3",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-chartjs": "^5.3.1"
   },
   "devDependencies": {
     "prettier": "3.3.2",
