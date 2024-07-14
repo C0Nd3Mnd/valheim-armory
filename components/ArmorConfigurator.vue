@@ -6,26 +6,49 @@ import { capes } from "~/data/capes";
 
 const model = defineModel<ArmorSet>({ required: true });
 
+const { deleteSet } = useArmorStore();
+
 const totalArmorValue = computed(() => getArmorSetValue(model.value));
 
 const name = ref("");
 </script>
 
 <template>
-  <div class="flex items-center justify-between gap-4">
+  <div
+    class="grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr_1fr_1fr_1fr_auto] items-start gap-4 bg-gray-200 px-4 py-2 rounded-lg"
+  >
     <UFormGroup label="Name" class="flex-1">
       <UInput v-model="model.name" />
     </UFormGroup>
-    <span>{{ totalArmorValue }}</span>
-    <div class="grid grid-cols-2 gap-2 items-center">
-      <span>Helmet</span>
-      <ArmorPiecePicker v-model="model.selection.helmet" :pieces="helmets" />
-      <span>Chest Armor</span>
-      <ArmorPiecePicker v-model="model.selection.chest" :pieces="chestArmor" />
-      <span>Leg Armor</span>
-      <ArmorPiecePicker v-model="model.selection.legs" :pieces="legArmor" />
-      <span>Cape</span>
-      <ArmorPiecePicker v-model="model.selection.cape" :pieces="capes" />
-    </div>
+    <ArmorValueDisplay :value="totalArmorValue" class="flex flex-col w-max" />
+    <ArmorPiecePicker
+      v-model="model.selection.helmet"
+      :pieces="helmets"
+      label="Helmet"
+    />
+    <ArmorPiecePicker
+      v-model="model.selection.chest"
+      :pieces="chestArmor"
+      label="Chest Armor"
+    />
+    <ArmorPiecePicker
+      v-model="model.selection.legs"
+      :pieces="legArmor"
+      label="Leg Armor"
+    />
+    <ArmorPiecePicker
+      v-model="model.selection.cape"
+      :pieces="capes"
+      label="Cape"
+    />
+    <UFormGroup label="Actions">
+      <UButton
+        color="red"
+        icon="i-pepicons-print-trash"
+        @click="deleteSet(model)"
+      >
+        Delete
+      </UButton>
+    </UFormGroup>
   </div>
 </template>

@@ -7,8 +7,8 @@ defineProps<{
 
 function iconName(star: number) {
   return model.value !== undefined && model.value >= star
-    ? "i-heroicons-star-solid"
-    : "i-heroicons-star";
+    ? "i-pepicons-print-star-filled"
+    : "i-pepicons-print-star";
 }
 </script>
 
@@ -18,14 +18,14 @@ function iconName(star: number) {
       v-for="star in max"
       :key="star"
       :name="iconName(star)"
-      class="text-yellow-500 cursor-pointer"
+      class="bg-primary-500 cursor-pointer size-6"
       @click="model = star as UpgradeLevel"
     />
     <UIcon
       v-for="unavailable in 4 - max"
       :key="unavailable"
-      name="i-heroicons-x-mark"
-      class="text-stone-300"
+      name="i-pepicons-print-star-off"
+      class="bg-gray-300 size-6"
     ></UIcon>
   </div>
 </template>

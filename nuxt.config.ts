@@ -10,4 +10,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  ui: {
+    icons: ["pepicons-print"],
+  },
+  ssr: false,
 });

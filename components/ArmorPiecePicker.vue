@@ -10,20 +10,27 @@ const model = defineModel<{ name: string; level: UpgradeLevel }>({
 const selectedPiece = computed(() =>
   props.pieces.find(({ name }) => name === model.value.name),
 );
+
+watch(
+  () => model.value.name,
+  () => (model.value.level = 1),
+);
 </script>
 
 <template>
-  <div class="flex gap-2 items-center">
-    <USelectMenu
-      v-model="model.name"
-      :options="pieces"
-      option-attribute="name"
-      value-attribute="name"
-      class="flex-1"
-    />
-    <UpgradeLevelPicker
-      v-model="model.level"
-      :max="Object.keys(selectedPiece?.armor ?? 0).length as UpgradeLevel"
-    />
-  </div>
+  <UFormGroup>
+    <div class="flex flex-col gap-2">
+      <USelectMenu
+        v-model="model.name"
+        :options="pieces"
+        option-attribute="name"
+        value-attribute="name"
+        class="flex-1"
+      />
+      <UpgradeLevelPicker
+        v-model="model.level"
+        :max="Object.keys(selectedPiece?.armor ?? 0).length as UpgradeLevel"
+      />
+    </div>
+  </UFormGroup>
 </template>

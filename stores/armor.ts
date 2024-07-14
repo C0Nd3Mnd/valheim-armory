@@ -59,5 +59,5 @@ export const useArmorStore = defineStore(
       deleteSet,
     };
   },
-  { persist: true },
+  { persist: { storage: persistedState.localStorage } },
 );

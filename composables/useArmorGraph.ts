@@ -3,6 +3,7 @@ import type { ChartData, Point } from "chart.js";
 export function useArmorGraph() {
   const armorStore = useArmorStore();
   const damageStore = useDamageStore();
+  const characterStore = useCharacterStore();
 
   /**
    * Calculated effective damage values for each armor set and each damage step.
@@ -25,7 +26,8 @@ export function useArmorGraph() {
             getArmorSetValue(armorSet),
           ),
           tankedHits: Math.ceil(
-            200 / valheimDamage(damageStep, getArmorSetValue(armorSet)),
+            characterStore.health /
+              valheimDamage(damageStep, getArmorSetValue(armorSet)),
           ),
         });
       }

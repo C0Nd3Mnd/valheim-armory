@@ -1,15 +1,22 @@
-export const useDamageStore = defineStore(
-  "damageStep",
-  () => {
-    /**
-     * Damage values to calculate the damage taken for.
-     */
-    const steps = ref(
-      new Array(17).fill(0).map((_, index) => (index + 8) * 10),
-    );
-    // const steps = ref([10, 20]);
+export const useDamageStore = defineStore("damageStep", () => {
+  const start = ref(10);
+  const end = ref(200);
+  const stepSize = ref(10);
 
-    return { steps };
-  },
-  // { persist: true },
-);
+  /**
+   * Damage values to calculate the damage taken for.
+   */
+  const steps = computed(() => {
+    const s: number[] = [];
+
+    for (let i = start.value; i < end.value; i += stepSize.value) {
+      s.push(i);
+    }
+
+    s.push(end.value);
+
+    return s;
+  });
+
+  return { start, end, stepSize, steps };
+});

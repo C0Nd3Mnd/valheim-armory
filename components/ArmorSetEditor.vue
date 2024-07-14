@@ -4,9 +4,18 @@ const armorStore = useArmorStore();
 
 <template>
   <div class="flex flex-col gap-2">
-    <div v-for="(_, index) in armorStore.sets" :key="index">
-      <ArmorConfigurator v-model="armorStore.sets[index]" />
-    </div>
-    <UButton @click="armorStore.addSet()">Add</UButton>
+    <ArmorConfigurator
+      v-for="(armorSet, index) in armorStore.sets"
+      :key="index"
+      v-model="armorStore.sets[index]"
+    />
+    <UButton
+      size="xl"
+      block
+      icon="i-pepicons-print-plus-circle-filled"
+      @click="armorStore.addSet()"
+    >
+      Add new Armor Set
+    </UButton>
   </div>
 </template>
