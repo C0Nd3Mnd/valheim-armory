@@ -30,7 +30,10 @@ const links = [
     <UCard :ui="{ header: { padding: 'pb-0' } }">
       <template #header class="p-0 px-0 py-0">
         <div class="flex flex-col gap-2">
-          <h1 class="text-2xl">Valheim Armory</h1>
+          <div class="flex gap-1 items-start">
+            <h1 class="text-2xl">Valheim Armory</h1>
+            <h4 class="text-md text-gray-400">alpha</h4>
+          </div>
           <UHorizontalNavigation :links="links" />
         </div>
       </template>
