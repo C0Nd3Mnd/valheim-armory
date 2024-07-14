@@ -6,7 +6,7 @@ import { capes } from "~/data/capes";
 
 const model = defineModel<ArmorSet>({ required: true });
 
-const { deleteSet } = useArmorStore();
+const { deleteSet, moveDown, moveUp } = useArmorStore();
 
 const totalArmorValue = computed(() => getArmorSetValue(model.value));
 
@@ -15,7 +15,7 @@ const name = ref("");
 
 <template>
   <div
-    class="grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr_1fr_1fr_1fr_auto] items-start gap-4 bg-gray-200 px-4 py-2 rounded-lg"
+    class="grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr_1fr_1fr_1fr_auto] items-start gap-4 bg-gray-100 px-4 py-2 rounded-lg"
   >
     <UFormGroup label="Name" class="flex-1">
       <UInput v-model="model.name" />
@@ -43,15 +43,24 @@ const name = ref("");
     />
     <UFormGroup label="Actions">
       <div class="flex gap-2">
-        <UButton
-          color="red"
-          icon="i-pepicons-print-trash"
+        <UIcon
+          name="i-pepicons-print-arrow-down"
+          title="Move down"
+          class="size-8 cursor-pointer bg-primary-500 hover:bg-primary-600"
+          @click="moveDown(model)"
+        />
+        <UIcon
+          name="i-pepicons-print-arrow-up"
+          title="Move up"
+          class="size-8 cursor-pointer bg-primary-500 hover:bg-primary-600"
+          @click="moveUp(model)"
+        />
+        <UIcon
+          name="i-pepicons-print-trash"
+          title="Delete"
+          class="size-8 cursor-pointer bg-red-500 hover:bg-red-600"
           @click="deleteSet(model)"
-        >
-          Delete
-        </UButton>
-        <!--        <UButton icon="i-pepicons-print-arrow-down" />-->
-        <!--        <UButton icon="i-pepicons-print-arrow-up" />-->
+        />
       </div>
     </UFormGroup>
   </div>

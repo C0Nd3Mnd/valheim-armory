@@ -47,7 +47,9 @@ export function useBurndownGraph() {
         dataset.health.push(healthLeft);
       }
 
-      dataset.health.push(0);
+      dataset.health.push(
+        dataset.health[dataset.health.length - 1] - effectiveDamagePerHit,
+      );
     }
 
     return matrix;

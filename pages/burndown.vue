@@ -14,9 +14,10 @@ const burndownChartOptions: ChartOptions<"line"> = {
       },
     },
     y: {
+      min: 0,
       title: {
         display: true,
-        text: "Health left",
+        text: "Health remaining",
       },
     },
   },
