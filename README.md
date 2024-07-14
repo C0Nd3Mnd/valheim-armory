@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# Valheim Armory
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Web application that helps calculate and visualize the effectiveness of different armor sets against certain amounts of damage. 
 
 ## Setup
 
