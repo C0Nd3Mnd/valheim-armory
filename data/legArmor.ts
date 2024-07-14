@@ -1,0 +1,16 @@
+export const legArmor: ArmorPiece[] = [
+  createArmorPiece("Rag pants", 1, 2),
+  createArmorPiece("Leather pants", 2, 4, 6, 8),
+  createArmorPiece("Troll leather pants", 6, 8, 10, 12),
+  createArmorPiece("Bronze plate leggings", 8, 10, 12, 14),
+  createArmorPiece("Root leggings", 8, 10, 12, 14),
+  createArmorPiece("Iron greaves", 14, 16, 18, 20),
+  createArmorPiece("Fenris leggings", 10, 12, 14, 16),
+  createArmorPiece("Wolf armor legs", 20, 22, 24, 26),
+  createArmorPiece("Padded greaves", 26, 28, 30, 32),
+  createArmorPiece("Eitr-weave trousers", 16, 18, 20, 22),
+  createArmorPiece("Carapace greaves", 32, 34, 36, 38),
+  createArmorPiece("Trousers of Embla", 19, 21, 23, 25),
+  createArmorPiece("Trousers of Ask", 28, 30, 32, 34),
+  createArmorPiece("Flametal Greaves", 38, 40, 42, 44),
+];

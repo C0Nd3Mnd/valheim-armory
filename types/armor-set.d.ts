@@ -1,4 +1,4 @@
 declare interface ArmorSet {
   name: string;
-  totalArmor: number;
+  selection: Record<"helmet" | "chest" | "legs" | "cape", ArmorPieceSelection>;
 }

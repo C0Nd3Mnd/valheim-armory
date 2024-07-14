@@ -1,5 +1,4 @@
 import type { ChartData, Point } from "chart.js";
-import { getIndexColor } from "~/utils/getIndexColor";
 
 export function useArmorGraph() {
   const armorStore = useArmorStore();
@@ -21,9 +20,12 @@ export function useArmorGraph() {
       for (const damageStep of damageStore.steps) {
         dataset.values.push({
           attackDamage: damageStep,
-          effectiveDamage: valheimDamage(damageStep, armorSet.totalArmor),
+          effectiveDamage: valheimDamage(
+            damageStep,
+            getArmorSetValue(armorSet),
+          ),
           tankedHits: Math.ceil(
-            200 / valheimDamage(damageStep, armorSet.totalArmor),
+            200 / valheimDamage(damageStep, getArmorSetValue(armorSet)),
           ),
         });
       }
@@ -40,7 +42,7 @@ export function useArmorGraph() {
   >(() => ({
     labels: damageStore.steps.map((step) => step.toString()),
     datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
-      label: `${armor.name.toString()} (${armor.totalArmor})`,
+      label: `${armor.name.toString()} (${getArmorSetValue(armor)})`,
       data: values.map(({ effectiveDamage }) => Math.round(effectiveDamage)),
       borderColor: getIndexColor(index),
     })),
@@ -54,7 +56,7 @@ export function useArmorGraph() {
   >(() => ({
     labels: damageStore.steps.map((step) => step.toString()),
     datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
-      label: `${armor.name.toString()} (${armor.totalArmor})`,
+      label: `${armor.name.toString()} (${getArmorSetValue(armor)})`,
       data: values.map(({ tankedHits }) => Math.round(tankedHits)),
       borderColor: getIndexColor(index),
     })),

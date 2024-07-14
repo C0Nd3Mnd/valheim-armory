@@ -5,7 +5,7 @@ export const useDamageStore = defineStore(
      * Damage values to calculate the damage taken for.
      */
     const steps = ref(
-      new Array(20).fill(0).map((_, index) => (index + 5) * 10),
+      new Array(17).fill(0).map((_, index) => (index + 8) * 10),
     );
     // const steps = ref([10, 20]);
 

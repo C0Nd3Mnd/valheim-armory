@@ -10,12 +10,28 @@ export const useArmorStore = defineStore(
      * Add a new armor set.
      *
      * @param name Name of the armor set
-     * @param totalArmor Total armor the armor set gives
      */
-    function addSet(name = "Unnamed", totalArmor = 50) {
+    function addSet(name = "Unnamed") {
       sets.value.push({
         name,
-        totalArmor,
+        selection: {
+          helmet: {
+            name: "Leather helmet",
+            level: 1,
+          },
+          chest: {
+            name: "Rag tunic",
+            level: 1,
+          },
+          legs: {
+            name: "Rag pants",
+            level: 1,
+          },
+          cape: {
+            name: "Deer hide cape",
+            level: 1,
+          },
+        },
       });
     }
 
