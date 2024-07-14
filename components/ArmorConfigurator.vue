@@ -42,13 +42,17 @@ const name = ref("");
       label="Cape"
     />
     <UFormGroup label="Actions">
-      <UButton
-        color="red"
-        icon="i-pepicons-print-trash"
-        @click="deleteSet(model)"
-      >
-        Delete
-      </UButton>
+      <div class="flex gap-2">
+        <UButton
+          color="red"
+          icon="i-pepicons-print-trash"
+          @click="deleteSet(model)"
+        >
+          Delete
+        </UButton>
+        <!--        <UButton icon="i-pepicons-print-arrow-down" />-->
+        <!--        <UButton icon="i-pepicons-print-arrow-up" />-->
+      </div>
     </UFormGroup>
   </div>
 </template>
