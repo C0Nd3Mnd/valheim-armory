@@ -10,11 +10,6 @@ const model = defineModel<{ name: string; level: UpgradeLevel }>({
 const selectedPiece = computed(() =>
   props.pieces.find(({ name }) => name === model.value.name),
 );
-
-watch(
-  () => model.value.name,
-  () => (model.value.level = 1),
-);
 </script>
 
 <template>
@@ -26,6 +21,7 @@ watch(
         option-attribute="name"
         value-attribute="name"
         class="flex-1"
+        @change="model.level = 1"
       />
       <UpgradeLevelPicker
         v-model="model.level"
