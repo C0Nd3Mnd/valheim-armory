@@ -10,6 +10,12 @@ function iconName(star: number) {
     ? "i-pepicons-print-star-filled"
     : "i-pepicons-print-star";
 }
+
+function color(star: number) {
+  return model.value !== undefined && model.value >= star
+    ? "bg-primary-500"
+    : "bg-gray-500";
+}
 </script>
 
 <template>
@@ -18,7 +24,8 @@ function iconName(star: number) {
       v-for="star in max"
       :key="star"
       :name="iconName(star)"
-      class="bg-primary-500 cursor-pointer size-6"
+      class="cursor-pointer size-6"
+      :class="color(star)"
       @click="model = star as UpgradeLevel"
     />
     <UIcon
