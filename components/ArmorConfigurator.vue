@@ -15,7 +15,7 @@ const name = ref("");
 
 <template>
   <div
-    class="grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr_1fr_1fr_1fr_auto] items-start gap-4 bg-gray-100 px-4 py-2 rounded-lg"
+    class="grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr_1fr_1fr_1fr_auto] items-start gap-4 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg"
   >
     <UFormGroup label="Name" class="flex-1">
       <UInput v-model="model.name" />

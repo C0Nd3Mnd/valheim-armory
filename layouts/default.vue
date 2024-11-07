@@ -22,6 +22,11 @@ const links = [
     to: "/burndown",
     icon: "i-pepicons-print-fire",
   },
+  {
+    label: "Settings",
+    to: "/settings",
+    icon: "i-pepicons-print-wrench",
+  },
 ];
 </script>
 
