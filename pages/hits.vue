@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ChartOptions } from "chart.js";
 const { tankedHitsChart } = useArmorGraph();
+const characterStore = useCharacterStore();
 
 const tankedHitsChartOptions: ChartOptions<"line"> = {
   scales: {
@@ -22,7 +23,7 @@ const tankedHitsChartOptions: ChartOptions<"line"> = {
       callbacks: {
         title: () => "",
         label: ({ label, raw, dataset }) =>
-          `${dataset.label}: You can tank ${raw} ${raw === "1" ? "hit" : "hits"} hits at ${label} damage.`,
+          `${dataset.label}: You can tank ${raw} ${raw === "1" ? "hit" : "hits"} at ${label} damage (${characterStore.health} starting health).`,
       },
     },
   },
