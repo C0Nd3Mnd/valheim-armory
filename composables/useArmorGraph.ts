@@ -59,7 +59,7 @@ export function useArmorGraph() {
     labels: damageStore.steps.map((step) => step.toString()),
     datasets: effectiveDamageMatrix.value.map(({ armor, values }, index) => ({
       label: `${armor.name.toString()} (${getArmorSetValue(armor)})`,
-      data: values.map(({ tankedHits }) => Math.round(tankedHits)),
+      data: values.map(({ tankedHits }) => Math.floor(tankedHits - 1)),
       borderColor: getIndexColor(index),
     })),
   }));
