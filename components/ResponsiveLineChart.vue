@@ -7,7 +7,19 @@ const props = defineProps<{
   options: ChartOptions<"line">;
 }>();
 
-const baseChartOptions: ChartOptions<"line"> = {
+const finalData = computed(() => {
+  const datasets = props.data.datasets.map((ds) => ({
+    ...ds,
+    pointRadius: 5,
+    pointHoverRadius: 7,
+    backgroundColor: ds.borderColor,
+  }));
+
+  return { ...props.data, datasets };
+});
+
+const finalChartOptions = computed<ChartOptions<"line">>(() => ({
+  ...props.options,
   maintainAspectRatio: true,
   aspectRatio: Math.max(
     (Math.min(window.innerWidth, 1536) / window.innerHeight) * 1.25,
@@ -15,19 +27,11 @@ const baseChartOptions: ChartOptions<"line"> = {
   ),
   responsive: true,
   plugins: {
+    ...props.options.plugins,
     legend: {
       display: false,
     },
   },
-};
-
-const enabledDatasets = [];
-
-const finalData = computed(() => props.data);
-
-const finalChartOptions = computed<ChartOptions<"line">>(() => ({
-  ...baseChartOptions,
-  ...props.options,
 }));
 </script>
 

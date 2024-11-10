@@ -20,6 +20,15 @@ const burndownChartOptions: ChartOptions<"line"> = {
       },
     },
   },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        title: () => "",
+        label: ({ label, raw, dataset }) =>
+          `${dataset.label}: After ${label} ${label === "1" ? "hit" : "hits"} you have ${raw} health left.`,
+      },
+    },
+  },
 };
 </script>
 

@@ -17,6 +17,15 @@ const tankedHitsChartOptions: ChartOptions<"line"> = {
       },
     },
   },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        title: () => "",
+        label: ({ label, raw, dataset }) =>
+          `${dataset.label}: You can tank ${raw} ${raw === "1" ? "hit" : "hits"} hits at ${label} damage.`,
+      },
+    },
+  },
 };
 </script>
 

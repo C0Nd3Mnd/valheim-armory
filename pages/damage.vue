@@ -17,6 +17,15 @@ const effectiveDamageChartOptions: ChartOptions<"line"> = {
       },
     },
   },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        title: () => "",
+        label: ({ label, raw, dataset }) =>
+          `${dataset.label}: ${label} damage reduced to ${raw} (~${Math.round((raw / label) * 100)}% damage taken)`,
+      },
+    },
+  },
 };
 </script>
 
