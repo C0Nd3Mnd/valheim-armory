@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@fontsource/caesar-dressing": "^5.1.0",
     "@iconify-json/pepicons-print": "^1.1.11",
     "@nuxt/ui": "^2.17.0",
     "@pinia/nuxt": "^0.5.1",

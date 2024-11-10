@@ -39,7 +39,10 @@ const links = [
             <h1 class="text-2xl">Valheim Armory</h1>
             <h4 class="text-md text-gray-400">alpha</h4>
           </div>
-          <UHorizontalNavigation :links="links" />
+          <UHorizontalNavigation
+            :links="links"
+            :ui="{ label: 'max-md:hidden' }"
+          />
         </div>
       </template>
       <slot />

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/caesar-dressing':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@iconify-json/pepicons-print':
         specifier: ^1.1.11
         version: 1.1.11
@@ -677,6 +680,9 @@ packages:
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+
+  '@fontsource/caesar-dressing@5.1.0':
+    resolution: {integrity: sha512-oo9zinNVjl3y4ZNKe/AsOPpCH5eSDUJGqKR2ZHBR6o83UqcF4T4yIbwsVe1xAqzVU0z+1JzJAWRUagEfWKDBNQ==}
 
   '@headlessui/tailwindcss@0.2.1':
     resolution: {integrity: sha512-2+5+NZ+RzMyrVeCZOxdbvkUSssSxGvcUxphkIfSVLpRiKsj+/63T2TOL9dBYMXVfj/CGr6hMxSRInzXv6YY7sA==}
@@ -4241,6 +4247,8 @@ snapshots:
     optional: true
 
   '@fastify/busboy@2.1.1': {}
+
+  '@fontsource/caesar-dressing@5.1.0': {}
 
   '@headlessui/tailwindcss@0.2.1(tailwindcss@3.4.4)':
     dependencies:

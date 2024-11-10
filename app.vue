@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import "@fontsource/caesar-dressing";
+
 useHead({
   title: "Valheim Armory",
   link: [
@@ -9,9 +11,12 @@ useHead({
     },
   ],
 });
+
+const settingsStore = useSettingsStore();
 </script>
 
 <template>
+  <StylizedFontInjector v-if="settingsStore.useStylizedFont" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

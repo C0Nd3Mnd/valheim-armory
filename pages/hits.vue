@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Line } from "vue-chartjs";
 import type { ChartOptions } from "chart.js";
 const { tankedHitsChart } = useArmorGraph();
 
@@ -22,5 +21,8 @@ const tankedHitsChartOptions: ChartOptions<"line"> = {
 </script>
 
 <template>
-  <Line :data="tankedHitsChart" :options="tankedHitsChartOptions" />
+  <ResponsiveLineChart
+    :data="tankedHitsChart"
+    :options="tankedHitsChartOptions"
+  />
 </template>

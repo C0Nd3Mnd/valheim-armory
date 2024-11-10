@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Line } from "vue-chartjs";
 import type { ChartOptions } from "chart.js";
 
 const { burndownChart } = useBurndownGraph();
@@ -29,6 +28,9 @@ const burndownChartOptions: ChartOptions<"line"> = {
     <UFormGroup label="Damage per hit">
       <UInput v-model="burndownStore.damagePerHit" type="number" />
     </UFormGroup>
-    <Line :data="burndownChart" :options="burndownChartOptions" />
+    <ResponsiveLineChart
+      :data="burndownChart"
+      :options="burndownChartOptions"
+    />
   </div>
 </template>

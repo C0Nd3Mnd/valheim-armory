@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Line } from "vue-chartjs";
 import type { ChartOptions } from "chart.js";
 const { effectiveDamageChart } = useArmorGraph();
 
@@ -22,5 +21,8 @@ const effectiveDamageChartOptions: ChartOptions<"line"> = {
 </script>
 
 <template>
-  <Line :data="effectiveDamageChart" :options="effectiveDamageChartOptions" />
+  <ResponsiveLineChart
+    :data="effectiveDamageChart"
+    :options="effectiveDamageChartOptions"
+  />
 </template>
