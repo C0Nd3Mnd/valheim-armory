@@ -3,9 +3,9 @@ const drawer = ref(false);
 
 const links = [
   {
-    label: "Configuration",
+    label: "Character",
     to: "/",
-    icon: "i-pepicons-print-gear",
+    icon: "i-pepicons-print-person",
   },
   {
     label: "Damage taken",

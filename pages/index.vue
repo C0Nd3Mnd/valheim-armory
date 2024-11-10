@@ -23,7 +23,7 @@ const damageStore = useDamageStore();
         <UInput v-model="damageStore.stepSize" type="number" />
       </UFormGroup>
     </div>
-    <h2 class="text-xl">Armor</h2>
+    <h2 class="text-xl">Armor Sets</h2>
     <ArmorSetEditor />
   </div>
 </template>
