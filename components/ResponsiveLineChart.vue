@@ -34,14 +34,11 @@ const finalChartOptions = computed<ChartOptions<"line">>(() => ({
 <template>
   <Line :data="finalData" :options="finalChartOptions" />
   <div class="flex gap-4 justify-center flex-wrap">
-    <UCheckbox
+    <span
       v-for="dataset of props.data.datasets"
-      :key="dataset.label"
-      :model-value="true"
-      :label="dataset.label"
-      :color="dataset.borderColor"
       :style="{ color: dataset.borderColor }"
-      :ui="{ inner: 'ms-1' }"
-    />
+    >
+      {{ dataset.label }}
+    </span>
   </div>
 </template>
